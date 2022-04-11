@@ -5,9 +5,10 @@
 요구사항:
 
 1. 파이썬 3 설치
-2. `pip install selenium`
-3. 브라우저 종류 및 버전에 맞는 드라이버를 다운로드
-    - 크롬: https://chromedriver.chromium.org/downloads
+2. 일부 스크립트의 경우(youtube_playlist_csv.py, youtube_script.py, youtube_playlist_script.py)
+   * `pip install selenium`
+   * 브라우저 종류 및 버전에 맞는 드라이버를 다운로드
+      - 크롬: https://chromedriver.chromium.org/downloads
 
 주의: **코드 사용에 따른 모든 책임은 사용자에게 있습니다.**
 
@@ -78,12 +79,38 @@ $ python youtube_video_download.py <다운로드하려는 영상의 ID>
 
 예:
 
+(스크립트 실행)
+
 ```
 $ youtube_video_download ARnG-7ca258
 <Stream: itag="315" mime_type="video/webm" res="2160p" fps="60fps" vcodec="vp9" progressive="False" type="video">
 <Stream: itag="308" mime_type="video/webm" res="1440p" fps="60fps" vcodec="vp9" progressive="False" type="video">
 <Stream: itag="299" mime_type="video/mp4" res="1080p" fps="60fps" vcodec="avc1.64002a" progressive="False" type="video">
 ...
+select itag:
+```
+
+(itag를 입력하면 영상과 음성 파일 다운로드 시작)
+
+```
 select itag:315
  ↳ |███                                                               | 4.0%
 ```
+
+(다운로드 완료 후 인코딩 시작. 시간이 오래 걸릴 수 있음에 유의.)
+
+```
+Output #0, webm, to 'D:\Videos\[생활 속 운동] 자전거 한강 라이딩 - 오즈모 포켓 4K 60fps.webm':
+  Metadata:
+    encoder         : Lavf59.20.101
+  Stream #0:0(eng): Audio: opus, 48000 Hz, stereo, flt, 96 kb/s (default)
+    Metadata:
+      encoder         : Lavc59.25.101 libopus
+  Stream #0:1(eng): Video: vp9, yuv420p(tv, bt709, progressive), 3840x2160 [SAR 1:1 DAR 16:9], q=2-31, 59.94 fps, 1k tbn (default)
+    Metadata:
+      encoder         : Lavc59.25.101 libvpx-vp9
+    Side data:
+      cpb: bitrate max/min/avg: 0/0/0 buffer size: 0 vbv_delay: N/A
+frame=  573 fps=4.6 q=27.0 size=   14592kB time=00:00:09.18 bitrate=13020.1kbits/s speed=0.0731x
+```
+
