@@ -67,7 +67,7 @@ $ pip install ffmpeg-python
 $ pip install pytube
 ```
 
-(Windows인 경우) [FFmpe 설치](https://www.wikihow.com/Install-FFmpeg-on-Windows)
+(Windows인 경우) [FFmpeg 설치](https://www.wikihow.com/Install-FFmpeg-on-Windows)
 
 사용법:
 
