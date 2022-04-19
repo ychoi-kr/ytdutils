@@ -1,6 +1,7 @@
 import sys
 import os
 from os.path import splitext
+import re
 
 from pytube import YouTube
 from pytube.cli import on_progress
@@ -42,5 +43,10 @@ def main(video_id):
 
 
 if __name__ == '__main__':
-    main(sys.argv[1])
+    m = re.match(r"https://www.youtube.com/watch[?]v=([A-za-z0-9\-]{11})\\w*", sys.argv[1])
+    if m:
+        video_id = m.group(1)
+    else:
+        video_id = sys.argv[1]
+    main(video_id)
 
